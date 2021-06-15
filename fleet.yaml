@@ -1,0 +1,6 @@
+# Default namespace
+#namespace: default
+
+# Location to kusomization.yaml
+kustomize:
+  dir: ""

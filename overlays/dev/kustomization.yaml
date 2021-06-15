@@ -1,0 +1,9 @@
+namePrefix: dev-
+namespace: dev
+
+bases:
+- ../../base
+
+patches:
+- update_deployment.yaml
+- update_service.yaml

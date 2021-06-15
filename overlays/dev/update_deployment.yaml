@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: hello-k8s
+
+spec:
+  # Production has 3 pods
+  replicas: 1
+
+  # Add production tag
+  template:
+    metadata:
+      labels:
+        env: dev
+
+    spec:
+      containers:
+      - name: hello-k8s
+        image: paulbouwer/hello-kubernetes:1.9
+        env:
+        - name: MESSAGE
+          value: Hello from development!

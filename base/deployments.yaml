@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: hello-k8s
+  namespace: default
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-k8s
+  template:
+    metadata:
+      labels:
+        app: hello-k8s
+
+    spec:
+      containers:
+      - name: hello-k8s
+        image: paulbouwer/hello-kubernetes:latest

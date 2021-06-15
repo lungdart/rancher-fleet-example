@@ -1,0 +1,32 @@
+# Gives the ClusterIP the env=dev selector
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-k8s
+  namespace: default
+
+spec:
+  selector:
+    env: dev
+
+---
+
+# Adds the dev hostname to as an ingress
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: hello-k8s
+  namespace: default
+  annotations:
+    rancher.io/globalDNS.hostname: dev.app.ranchertest.orthoanalytics.biz
+
+spec:
+  rules:
+  - host: dev.app.ranchertest.orthoanalytics.biz
+    http:
+      paths:
+      - backend:
+          serviceName: hello-k8s
+          servicePort: 80
+        path: /
+        pathType: Prefix
