@@ -17,6 +17,8 @@ kind: Ingress
 metadata:
   name: hello-k8s
   namespace: default
+  annotations:
+    rancher.io/globalDNS.hostname: staging.app.ranchertest.orthoanalytics.biz
 
 spec:
   rules:
